@@ -1,10 +1,10 @@
 README.md
 setup.py
-src/End_to_End_Wine_Quality_Prediction.egg-info/PKG-INFO
-src/End_to_End_Wine_Quality_Prediction.egg-info/SOURCES.txt
-src/End_to_End_Wine_Quality_Prediction.egg-info/dependency_links.txt
-src/End_to_End_Wine_Quality_Prediction.egg-info/top_level.txt
 src/ML_Project/__init__.py
+src/ML_Project.egg-info/PKG-INFO
+src/ML_Project.egg-info/SOURCES.txt
+src/ML_Project.egg-info/dependency_links.txt
+src/ML_Project.egg-info/top_level.txt
 src/ML_Project/components/__init__.py
 src/ML_Project/config/__init__.py
 src/ML_Project/config/configuration.py

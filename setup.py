@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import setuptools
 
 setup(
-    name="End_to_End_Wine_Quality_Prediction",
+    name="ML_Project",
     version="0.1",
     author="Mohamed Aziz Jnayah",
     author_email="mohamedazizjnayah@gmail.com",
