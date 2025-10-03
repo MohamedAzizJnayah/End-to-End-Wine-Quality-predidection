@@ -3,7 +3,7 @@ numpy
 notebook
 scikit-learn
 matplotlib
-python-box==6.0.2
+python-box
 pyYAML
 ensure==1.0.2
 joblib
