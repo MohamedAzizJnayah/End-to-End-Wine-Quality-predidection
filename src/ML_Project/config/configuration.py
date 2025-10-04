@@ -1,7 +1,9 @@
+#Configuration Manager
 
 from ML_Project.constants import *
-from ML_Project.entity.config_entity import DataIngestionConfig
-from ML_Project.utils.common import read_yaml,create_directories
+from ML_Project.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from ML_Project.utils.common import create_directories
+
 
 class ConfigurationManager:
     def __init__(
@@ -18,7 +20,6 @@ class ConfigurationManager:
     def get_data_ingestion_config(self) -> DataIngestionConfig:
     
         config = self.config.data_ingestion
-        
         data_ingestion_config = DataIngestionConfig(
             root_dir=config.root_dir,
             source_url=config.source_URL,
@@ -28,3 +29,15 @@ class ConfigurationManager:
         )
        
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config=self.config.data_validation
+        root_dir=Path(config.root_dir)
+        create_directories([root_dir])
+        data_validation_config=DataValidationConfig(
+            root_dir=Path(config.root_dir),
+            unzip_data_dir=Path(config.unzip_data_dir),
+            STATUS_FILE=Path(config.STATUS_FILE),
+            all_schema=self.schema
+        )
+        return data_validation_config
