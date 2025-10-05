@@ -1,7 +1,7 @@
 #Configuration Manager
 
 from ML_Project.constants import *
-from ML_Project.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from ML_Project.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig
 from ML_Project.utils.common import create_directories
 
 
@@ -41,3 +41,13 @@ class ConfigurationManager:
             all_schema=self.schema
         )
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config=self.config.data_transformation
+        root_dir=Path(config.root_dir)
+        create_directories([root_dir])
+        data_transformation_config=DataTransformationConfig(
+            root_dir=root_dir,
+            data_path=Path(config.data_path)
+        )
+        return data_transformation_config
