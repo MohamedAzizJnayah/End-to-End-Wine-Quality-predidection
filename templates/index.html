@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wine Quality Prediction</title>
+    <link rel="icon" href="/static/assets/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">🍷 Wine Bar</a>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="overlay"></div>
+      <div class="header-content">
+        <h1>Wine Quality Prediction</h1>
+        <p class="subheading">Check your wine like a professional sommelier</p>
+      </div>
+    </header>
+
+    <!-- Form -->
+    <div class="form-section">
+      <form action="/predict" method="post" class="wine-form">
+        <h2>Enter Wine Features</h2>
+
+        <div class="form-row">
+          <label>Fixed Acidity</label>
+          <input type="text" name="fixed_acidity" required />
+        </div>
+        <div class="form-row">
+          <label>Volatile Acidity</label>
+          <input type="text" name="volatile_acidity" required />
+        </div>
+        <div class="form-row">
+          <label>Citric Acid</label>
+          <input type="text" name="citric_acid" required />
+        </div>
+        <div class="form-row">
+          <label>Residual Sugar</label>
+          <input type="text" name="residual_sugar" required />
+        </div>
+        <div class="form-row">
+          <label>Chlorides</label>
+          <input type="text" name="chlorides" required />
+        </div>
+        <div class="form-row">
+          <label>Free Sulfur Dioxide</label>
+          <input type="text" name="free_sulfur_dioxide" required />
+        </div>
+        <div class="form-row">
+          <label>Total Sulfur Dioxide</label>
+          <input type="text" name="total_sulfur_dioxide" required />
+        </div>
+        <div class="form-row">
+          <label>Density</label>
+          <input type="text" name="density" required />
+        </div>
+        <div class="form-row">
+          <label>pH</label>
+          <input type="text" name="pH" required />
+        </div>
+        <div class="form-row">
+          <label>Sulphates</label>
+          <input type="text" name="sulphates" required />
+        </div>
+        <div class="form-row">
+          <label>Alcohol</label>
+          <input type="text" name="alcohol" required />
+        </div>
+
+        <div class="form-submit">
+          <button type="submit">Predict</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Classic Wine Bar © 2025</p>
+      <a href="https://www.linkedin.com/in/mohamedazizjnayah/"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <a href="https://github.com/MohamedAzizJnayah"
+        ><i class="fab fa-github"></i
+      ></a>
+    </footer>
+  </body>
+</html>
