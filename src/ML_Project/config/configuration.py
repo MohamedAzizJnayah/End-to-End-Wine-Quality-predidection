@@ -1,7 +1,7 @@
 #Configuration Manager
 
 from ML_Project.constants import *
-from ML_Project.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainerConfig
+from ML_Project.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainerConfig
 from ML_Project.utils.common import create_directories
 
 
@@ -67,8 +67,19 @@ class ConfigurationManager:
         )
         return model_trainer_config
 
+    def get_model_evaluation_config(self)-> ModelEvaluationConfig:
+        config=self.config.model_evaluation
+        create_directories([Path(config.root_dir)])
+        model_evaluation_config=ModelEvaluationConfig(
+            root_dir=Path(config.root_dir),
+            test_data_path=Path(config.test_data_path),
+            model_path=Path(config.model_path),
+            all_param=self.params,
+            metrics_file_name=Path(config.metrics_file_name),
+            target_column=self.schema.TARGET_COLUMN
 
-
+        )
+        return model_evaluation_config
 
 
 

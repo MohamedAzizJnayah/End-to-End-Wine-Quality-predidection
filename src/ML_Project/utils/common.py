@@ -1,3 +1,4 @@
+import json
 import yaml
 from box import ConfigBox
 from box.exceptions import  BoxValueError
@@ -29,3 +30,16 @@ def create_directories(path_to_directories: list[Path] , verbose=True):
 def get_size(path: Path) -> str:
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+
+@ensure_annotations
+def save_json(data:dict,file_path:Path):
+    try:
+        with open(file_path, "w") as f :
+            json.dump(data, f, indent=4)
+        logger.info(f"created json file at :{file_path}")
+
+    except Exception as e :
+        logger.error(f"Error while saving JSON file: {e}")
+        raise e
+    
