@@ -1,7 +1,7 @@
 #Configuration Manager
 
 from ML_Project.constants import *
-from ML_Project.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig
+from ML_Project.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainerConfig
 from ML_Project.utils.common import create_directories
 
 
@@ -51,3 +51,27 @@ class ConfigurationManager:
             data_path=Path(config.data_path)
         )
         return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config=self.config.model_trainer
+        params=self.params.Elasticsearch
+        schema=self.schema.TARGET_COLUMN
+        model_trainer_config=ModelTrainerConfig(
+            root_dir=Path(config.root_dir),
+            train_data_path=Path(config.train_data_path),
+            test_data_path=Path(config.test_data_path),
+            model_name=config.model_name,
+            alpha=params.alpha,
+            l1_ratio=params.l1_ratio,
+            target_column=schema.name
+        )
+        return model_trainer_config
+
+
+
+
+
+
+
+
+
