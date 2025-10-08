@@ -1,0 +1,25 @@
+name: Test Docker Image
+
+on:
+  workflow_run:
+    workflows: ["Build and Push Docker Image"]
+    types:
+      - completed
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Pull Docker image
+        run: |
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/wine_quality_prediction:latest
+
+      - name: Run simple test
+        run: |
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/wine_quality_prediction:latest python -c "print('Test passed!')"
