@@ -22,7 +22,7 @@ jobs:
 
       - name: Build and Push Docker Image
         env:
-          REPOSITORY: Wine_Quality_Prediction
+          REPOSITORY: wine_quality_prediction
           IMAGE_TAG: latest
         run: |
           
