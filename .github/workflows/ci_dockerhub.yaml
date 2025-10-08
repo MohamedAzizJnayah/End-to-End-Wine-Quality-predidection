@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build, Push and Test Docker Image
 
 on:
   push:
@@ -25,14 +25,13 @@ jobs:
           REPOSITORY: wine_quality_prediction
           IMAGE_TAG: latest
         run: |
-          
           docker build -t $REPOSITORY:$IMAGE_TAG .
           docker tag $REPOSITORY:$IMAGE_TAG ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG
 
   test:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: build-and-push   # ce job ne démarre qu'après succès du build
 
     steps:
       - name: Checkout code
